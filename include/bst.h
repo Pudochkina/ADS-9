@@ -12,7 +12,7 @@ class BST {
   Node* right = nullptr;
   };
   Node* root;
-  Node* addNode(Node*, T&) {
+  Node* addNode(Node*, T& val) {
 if (root == nullptr) {
     root = new Node;
 root->value = val;
@@ -53,7 +53,7 @@ else
  public:
 BST() :root(nullptr) {}
 void add(const T& val) {
-  root = addNode;
+  root = addNode(root, val);
 }
 int search(const T& val) {
   return searchNode(root, val);
