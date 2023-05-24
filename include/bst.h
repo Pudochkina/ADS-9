@@ -37,16 +37,6 @@ else if (root->value < val)
 else 
   return searchNode(root->right, val);
 }
-int searchNode(Node* root, const T& val) {
-if (root == nullptr) 
-  return 0;
-else if (root->value == val) 
-  return root->count;
-else if (root->value < val) 
-  return searchNode(root->left, val);
-else 
-  return searchNode(root->right, val);
-}
 int calc_l(Node* root) {
   int left = 0, right = 0;
 if (root == nullptr)
