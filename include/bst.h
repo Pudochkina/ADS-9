@@ -12,9 +12,9 @@ class BST {
   Node* right = nullptr;
   };
   Node* root;
-  Node* addNode(Node*, T&) {
+  Node* addNode(Node*, T& val) {
 if (root == nullptr) {
-    root = new Node;
+    root = new Node(root, val);
 root->value = val;
 root->count = 1;
 root->left = root->right = nullptr;
