@@ -7,23 +7,28 @@
 
 BST<std::string> makeTree(const char* filename) {
   BST<std::string> tree;
-std::ifstream file(filename);
-std::string simb = "";
-if (!file) {
-  std::cout << "Error!" << std::endl;
-  return;
-}
-while (!file.eof()) {
-  simb = "";
-  while (true) {  
-    char dop = file.get();
-    if ((dop >= 65 && dop <= 90) || (dop >= 97 && dop <= 122)) {
-    simb += tolower(dop);
-    } else {
-      break;
-  }
-}
-tree.add(simb);
-}
-return tree;
+    std::fstream file(filename);
+    if (!file) {
+        std::cout << "Ошибка файла" << std::endl;
+        return tree;
+    }
+    std::string str;
+    while (!file.eof()) {
+        char chr = file.get();
+        if (chr >= 'A' && chr <= 'Z') {
+            str += std::tolower(chr);
+        } else if (chr >= 'a' && chr <= 'z') {
+            str += chr;
+        } else {
+            if (str != "") {
+                tree.add(str);
+            }
+            str.clear();
+        }
+    }
+    if (str != "") {
+        tree.add(str);
+    }
+    file.close();
+    return tree;
 }
